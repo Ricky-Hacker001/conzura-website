@@ -57,6 +57,13 @@
                     <p class="text-gray-400">Engaging your audience with expert strategies across all digital channels.</p>
                 </div>
             </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+    <div class="card-border"></div>
+    <div class="card-content">
+        <h3 class="font-display text-2xl font-bold text-white mb-2">Finance Solutions</h3>
+        <p class="text-gray-400">Revolutionizing financial operations with secure, scalable, and compliant software.</p>
+    </div>
+</div>
         </div>
     </div>
 </section>

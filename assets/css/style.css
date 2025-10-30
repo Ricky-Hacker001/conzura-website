@@ -17,7 +17,7 @@ body {
   color: #e5e7eb;
   font-family: "Inter", sans-serif;
   cursor: none;
-  opacity: 0;
+  /* opacity: 0; */
   transition: opacity 1.2s ease-out;
 }
 
@@ -92,13 +92,13 @@ button {
 /* ===============================================
    HERO SECTION
    =============================================== */
-.hero-headline,
+/* .hero-headline,
 .hero-subheadline,
 .logo-link,
 .nav-links,
 .cta-button {
-  opacity: 0;
-}
+  opacity: 100;
+} */
 
 /* Animated Gradient Text */
 @keyframes gradientShift {
@@ -399,4 +399,18 @@ h1,
 h2,
 h3 {
   text-shadow: 0 0 20px rgba(109, 40, 217, 0.25);
+}
+
+
+/* ===============================================
+   GSAP FALLBACK (Temporarily added to force visibility)
+   =============================================== */
+.logo-link,
+.nav-links,
+.hero-headline,
+.hero-subheadline,
+.cta-button {
+  /* Use a delayed transition to override any stuck GSAP inline styles */
+  transition: opacity 0.01s ease 1.5s !important; 
+  opacity: 1 !important;
 }
