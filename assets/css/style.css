@@ -1,0 +1,402 @@
+/* =========================================================
+   Premium Tech Website Styles — Modern Animated Version
+   Author: Conzura Soft Solutions
+   ========================================================= */
+
+/* Base Colors */
+:root {
+  --primary: #6d28d9; /* Purple */
+  --accent-orange: #f97316;
+  --accent-cyan: #22d3ee;
+  --dark-bg: #0a0a0a;
+}
+
+/* Global Layout */
+body {
+  background-color: var(--dark-bg);
+  color: #e5e7eb;
+  font-family: "Inter", sans-serif;
+  cursor: none;
+  opacity: 0;
+  transition: opacity 1.2s ease-out;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+a,
+button {
+  cursor: none;
+}
+
+/* ===============================================
+   CUSTOM CURSOR
+   =============================================== */
+.custom-cursor {
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  transition: all 0.25s ease-out;
+  z-index: 9999;
+}
+
+.custom-cursor.hover {
+  transform: scale(2);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+}
+
+/* ===============================================
+   MARQUEE ANIMATION
+   =============================================== */
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.marquee-container {
+  position: relative;
+}
+.marquee-container::before,
+.marquee-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.marquee-container::before {
+  left: 0;
+  background: linear-gradient(to right, #0a0a0a, transparent);
+}
+.marquee-container::after {
+  right: 0;
+  background: linear-gradient(to left, #0a0a0a, transparent);
+}
+
+/* ===============================================
+   HERO SECTION
+   =============================================== */
+.hero-headline,
+.hero-subheadline,
+.logo-link,
+.nav-links,
+.cta-button {
+  opacity: 0;
+}
+
+/* Animated Gradient Text */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero-headline span.bg-clip-text {
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Floating Animation for Hero Text */
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.hero-headline span,
+.hero-subheadline {
+  animation: floatY 6s ease-in-out infinite;
+}
+
+/* Aurora overlay shimmer */
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ===============================================
+   SERVICE CARDS — GLOW BORDER + DEPTH
+   =============================================== */
+.service-card {
+  position: relative;
+  padding: 1px;
+  border-radius: 1rem;
+  background: #0a0a0a;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 40px rgba(109, 40, 217, 0.25);
+}
+
+.service-card .card-content {
+  background: #111827;
+  padding: 2rem;
+  border-radius: inherit;
+  position: relative;
+  z-index: 2;
+}
+
+.service-card .card-border {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+    rgba(109, 40, 217, 0.4),
+    transparent 80%
+  );
+  transition: background 0.5s ease;
+}
+
+.service-card:hover .card-border {
+  background: radial-gradient(
+    300px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+    rgba(109, 40, 217, 0.7),
+    transparent 80%
+  );
+}
+
+/* ===============================================
+   PROCESS SECTION
+   =============================================== */
+.process-step {
+  position: relative;
+  padding-top: 3rem;
+}
+
+.step-number {
+  position: absolute;
+  top: -1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a;
+  border: 2px solid #374151;
+  border-radius: 50%;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+#process-line {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* ===============================================
+   TECHNOLOGY ICON GRID
+   =============================================== */
+.tech-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #111827;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #1f2937;
+  transition: all 0.3s ease;
+}
+
+.tech-logo {
+  height: 32px;
+  width: auto;
+  fill: #6b7280;
+  transition: all 0.3s ease-in-out;
+}
+
+.tech-logo-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(109, 40, 217, 0.2);
+}
+
+.tech-logo-container:hover .tech-logo {
+  fill: #ffffff;
+  transform: scale(1.1);
+}
+
+/* ===============================================
+   TESTIMONIAL SECTION
+   =============================================== */
+.testimonial-container {
+  position: relative;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* ===============================================
+   AURORA CTA BACKGROUND
+   =============================================== */
+.aurora-background {
+  position: relative;
+  overflow: hidden;
+  background-color: #111827;
+}
+
+.aurora-background::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120vw;
+  height: 120vh;
+  background-image: radial-gradient(
+      circle,
+      rgba(109, 40, 217, 0.3) 0%,
+      rgba(109, 40, 217, 0) 60%
+    ),
+    radial-gradient(
+      circle,
+      rgba(249, 115, 22, 0.2) 0%,
+      rgba(249, 115, 22, 0) 50%
+    );
+  transform: translate(-50%, -50%);
+  animation: aurora 20s linear infinite;
+  z-index: 0;
+}
+
+@keyframes aurora {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* ===============================================
+   FAQ SECTION (Accordion)
+   =============================================== */
+.faq-question {
+  transition: all 0.2s ease;
+}
+
+.faq-question:hover span {
+  color: var(--accent-orange);
+}
+
+.faq-icon {
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  stroke: #9ca3af;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+    padding 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.faq-item.is-open .faq-icon {
+  transform: rotate(45deg);
+  stroke: var(--primary);
+}
+.faq-item.is-open .faq-answer {
+  max-height: 200px;
+}
+
+/* ===============================================
+   TEAM CARDS
+   =============================================== */
+.team-card {
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #374151;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
+    0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* ===============================================
+   CTA BUTTON (GLOW EFFECT)
+   =============================================== */
+.cta-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.cta-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: all 0.6s ease;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(249, 115, 22, 0.3);
+}
+
+/* ===============================================
+   GLASS EFFECT & DEPTH
+   =============================================== */
+.glass {
+  background: rgba(17, 25, 40, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+}
+
+/* ===============================================
+   HEADLINE LIGHT GLOW
+   =============================================== */
+h1,
+h2,
+h3 {
+  text-shadow: 0 0 20px rgba(109, 40, 217, 0.25);
+}
